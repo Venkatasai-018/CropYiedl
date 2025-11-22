@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Charts and Animations -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     
@@ -998,6 +997,12 @@
                 document.getElementById('avgConfidence').textContent = 
                     data.average_confidence ? `${(data.average_confidence * 100).toFixed(1)}%` : '--';
             }
+        }
+
+        function updateCharts() {
+            // Chart functionality has been replaced with featured image
+            // This function is kept for compatibility but doesn't create charts anymore
+            console.log('Charts section has been replaced with featured image showcase');
         }
 
         // Event Listeners
