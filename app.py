@@ -10,74 +10,79 @@ from flask import Flask, render_template, request, jsonify, send_file
 from flask_cors import CORS
 import numpy as np
 import pandas as pd
-import joblib
 import os
 import json
 from datetime import datetime
 import warnings
+from main import RandomForestCropRecommender
 warnings.filterwarnings('ignore')
 
 app = Flask(__name__)
 CORS(app)
 
 class CropRecommendationPredictor:
-    """Advanced crop recommendation predictor."""
+    """Advanced crop recommendation predictor using Random Forest module."""
     
     def __init__(self):
-        self.model_data = None
+        self.recommender = RandomForestCropRecommender()
         self.prediction_history = []
         self.load_model()
         
     def load_model(self):
-        """Load the trained model and preprocessing objects."""
+        """Load the Random Forest model with integrated components."""
         try:
-            if os.path.exists('best_crop_recommendation_model.pkl'):
-                self.model_data = joblib.load('best_crop_recommendation_model.pkl')
-                print(f"✅ Model loaded: {self.model_data['model_name']}")
-                print(f"✅ Model accuracy: {self.model_data['accuracy']:.4f}")
+            model_path = 'random_forest_crop_recommender.pkl'
+            
+            if os.path.exists(model_path):
+                self.recommender.load_model(model_path)
+                print(f"✅ Model loaded: Random Forest")
+                print(f"✅ Model accuracy: {self.recommender.accuracy:.4f}")
                 return True
+            elif os.path.exists('best_crop_recommendation_model.pkl'):
+                print("⚠️ Old model format detected. Please run random_forest_module.py to create new model.")
+                return False
             else:
-                print("❌ Model file not found. Please run advanced_analysis.py first.")
+                print("❌ Model file not found. Please train the Random Forest model first.")
                 return False
         except Exception as e:
             print(f"❌ Error loading model: {e}")
             return False
     
     def predict(self, input_data):
-        """Make crop recommendation prediction."""
-        if not self.model_data:
-            raise ValueError("Model not loaded")
+        """Make crop recommendation prediction using Random Forest module."""
+        if not self.recommender.is_trained:
+            raise ValueError("Random Forest model not loaded")
         
         try:
-            # Convert input to DataFrame
-            df = pd.DataFrame([input_data])
+            # Use the integrated Random Forest module for prediction
+            result = self.recommender.predict(input_data)
             
-            # Scale the features
-            X_scaled = self.model_data['scaler'].transform(df)
+            # Add confidence level and store in history
+            confidence_level = self.get_confidence_level(result['confidence'])
             
-            # Make prediction
-            prediction = self.model_data['model'].predict(X_scaled)[0]
-            prediction_proba = self.model_data['model'].predict_proba(X_scaled)[0]
+            # Store prediction in history
+            self.prediction_history.append({
+                'crop': result['recommended_crop'],
+                'confidence': result['confidence'],
+                'confidence_level': confidence_level,
+                'timestamp': datetime.now().isoformat(),
+                'input_data': input_data.copy()
+            })
             
-            # Convert prediction back to crop name
-            crop_name = self.model_data['label_encoder'].inverse_transform([prediction])[0]
-            
-            # Get confidence score
-            confidence = float(np.max(prediction_proba))
-            
-            # Get top 3 recommendations
-            top_indices = np.argsort(prediction_proba)[-3:][::-1]
-            top_crops = self.model_data['label_encoder'].inverse_transform(top_indices)
-            top_probabilities = prediction_proba[top_indices]
-            
-            recommendations = [
-                {
-                    'crop': crop,
-                    'probability': float(prob),
-                    'confidence_level': self.get_confidence_level(float(prob))
-                }
-                for crop, prob in zip(top_crops, top_probabilities)
-            ]
+            # Return formatted result
+            return {
+                'recommended_crop': result['recommended_crop'],
+                'confidence': result['confidence'],
+                'confidence_level': confidence_level,
+                'top_recommendations': [
+                    {
+                        'crop': rec['crop'],
+                        'probability': rec['probability'],
+                        'confidence_level': self.get_confidence_level(rec['probability'])
+                    }
+                    for rec in result['top_recommendations']
+                ]
+            }
             
             result = {
                 'recommended_crop': crop_name,
@@ -209,18 +214,13 @@ def history():
 
 @app.route('/api/model-info')
 def model_info():
-    """Get model information."""
+    """Get model information from Random Forest module."""
     try:
-        if predictor.model_data:
-            info = {
-                'model_name': predictor.model_data['model_name'],
-                'accuracy': predictor.model_data['accuracy'],
-                'training_date': predictor.model_data['training_date'],
-                'features': predictor.model_data['feature_names'],
-                'total_predictions': len(predictor.prediction_history)
-            }
+        if predictor.recommender.is_trained:
+            info = predictor.recommender.get_model_info()
+            info['total_predictions'] = len(predictor.prediction_history)
         else:
-            info = {'error': 'Model not loaded'}
+            info = {'error': 'Random Forest model not loaded'}
         
         return jsonify({
             'success': True,
