@@ -1,0 +1,250 @@
+===============================================================================
+                    RANDOM FOREST CROP RECOMMENDATION MODEL
+                          15 CROPS ANALYSIS REPORT
+===============================================================================
+
+📊 DETAILED PARAMETER RANGES FOR 15 CROPS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. RICE
+   ├─ Nitrogen (N)     : 60 - 99 kg/ha      (Average: 79.9 kg/ha)
+   ├─ Phosphorus (P)   : 35 - 60 kg/ha      (Average: 47.6 kg/ha)
+   ├─ Potassium (K)    : 35 - 45 kg/ha      (Average: 39.9 kg/ha)
+   ├─ Temperature      : 20.0 - 26.9°C      (Average: 23.7°C)
+   ├─ Humidity         : 80.1 - 85.0%       (Average: 82.3%)
+   ├─ pH Level         : 5.0 - 7.9          (Average: 6.4)
+   ├─ Rainfall         : 183 - 299 mm       (Average: 236.2 mm)
+   └─ Classification   : High Water Need, Medium N Requirement
+
+2. MAIZE
+   ├─ Nitrogen (N)     : 60 - 100 kg/ha     (Average: 77.8 kg/ha)
+   ├─ Phosphorus (P)   : 35 - 60 kg/ha      (Average: 48.4 kg/ha)
+   ├─ Potassium (K)    : 15 - 25 kg/ha      (Average: 19.8 kg/ha)
+   ├─ Temperature      : 18.0 - 26.5°C      (Average: 22.4°C)
+   ├─ Humidity         : 55.3 - 74.8%       (Average: 65.1%)
+   ├─ pH Level         : 5.5 - 7.0          (Average: 6.2)
+   ├─ Rainfall         : 61 - 110 mm        (Average: 84.8 mm)
+   └─ Classification   : Low Water Need, Medium N Requirement
+
+3. COTTON
+   ├─ Nitrogen (N)     : 100 - 140 kg/ha    (Average: 117.8 kg/ha)
+   ├─ Phosphorus (P)   : 35 - 60 kg/ha      (Average: 46.2 kg/ha)
+   ├─ Potassium (K)    : 15 - 25 kg/ha      (Average: 19.6 kg/ha)
+   ├─ Temperature      : 22.0 - 26.0°C      (Average: 24.0°C)
+   ├─ Humidity         : 75.0 - 84.9%       (Average: 79.8%)
+   ├─ pH Level         : 5.8 - 8.0          (Average: 6.9)
+   ├─ Rainfall         : 61 - 100 mm        (Average: 80.4 mm)
+   └─ Classification   : Low Water Need, High N Requirement
+
+4. BANANA
+   ├─ Nitrogen (N)     : 80 - 120 kg/ha     (Average: 100.2 kg/ha)
+   ├─ Phosphorus (P)   : 70 - 95 kg/ha      (Average: 82.0 kg/ha)
+   ├─ Potassium (K)    : 45 - 55 kg/ha      (Average: 50.0 kg/ha)
+   ├─ Temperature      : 25.0 - 29.9°C      (Average: 27.4°C)
+   ├─ Humidity         : 75.0 - 85.0%       (Average: 80.4%)
+   ├─ pH Level         : 5.5 - 6.5          (Average: 6.0)
+   ├─ Rainfall         : 90 - 120 mm        (Average: 104.6 mm)
+   └─ Classification   : Low Water Need, High N Requirement
+
+5. APPLE
+   ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 20.8 kg/ha)
+   ├─ Phosphorus (P)   : 120 - 145 kg/ha    (Average: 134.2 kg/ha)
+   ├─ Potassium (K)    : 195 - 205 kg/ha    (Average: 199.9 kg/ha)
+   ├─ Temperature      : 21.0 - 24.0°C      (Average: 22.6°C)
+   ├─ Humidity         : 90.0 - 94.9%       (Average: 92.3%)
+   ├─ pH Level         : 5.5 - 6.5          (Average: 5.9)
+   ├─ Rainfall         : 100 - 125 mm       (Average: 112.7 mm)
+   └─ Classification   : Low Water Need, Low N Requirement
+
+6. MANGO
+   ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 20.1 kg/ha)
+   ├─ Phosphorus (P)   : 15 - 40 kg/ha      (Average: 27.2 kg/ha)
+   ├─ Potassium (K)    : 25 - 35 kg/ha      (Average: 29.9 kg/ha)
+   ├─ Temperature      : 27.0 - 36.0°C      (Average: 31.2°C)
+   ├─ Humidity         : 45.0 - 55.0%       (Average: 50.2%)
+   ├─ pH Level         : 4.5 - 7.0          (Average: 5.8)
+   ├─ Rainfall         : 89 - 101 mm        (Average: 94.7 mm)
+   └─ Classification   : Low Water Need, Low N Requirement
+
+7. GRAPES
+   ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 23.2 kg/ha)
+   ├─ Phosphorus (P)   : 120 - 145 kg/ha    (Average: 132.5 kg/ha)
+   ├─ Potassium (K)    : 195 - 205 kg/ha    (Average: 200.1 kg/ha)
+   ├─ Temperature      : 8.8 - 41.9°C       (Average: 23.8°C)
+   ├─ Humidity         : 80.0 - 84.0%       (Average: 81.9%)
+   ├─ pH Level         : 5.5 - 6.5          (Average: 6.0)
+   ├─ Rainfall         : 65 - 75 mm         (Average: 69.6 mm)
+   └─ Classification   : Low Water Need, Low N Requirement
+
+8. ORANGE
+   ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 19.6 kg/ha)
+   ├─ Phosphorus (P)   : 5 - 30 kg/ha       (Average: 16.6 kg/ha)
+   ├─ Potassium (K)    : 5 - 15 kg/ha       (Average: 10.0 kg/ha)
+   ├─ Temperature      : 10.0 - 34.9°C      (Average: 22.8°C)
+   ├─ Humidity         : 90.0 - 95.0%       (Average: 92.2%)
+   ├─ pH Level         : 6.0 - 8.0          (Average: 7.0)
+   ├─ Rainfall         : 100 - 120 mm       (Average: 110.5 mm)
+   └─ Classification   : Low Water Need, Low N Requirement
+
+9. POMEGRANATE
+   ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 18.9 kg/ha)
+   ├─ Phosphorus (P)   : 5 - 30 kg/ha       (Average: 18.8 kg/ha)
+   ├─ Potassium (K)    : 35 - 45 kg/ha      (Average: 40.2 kg/ha)
+   ├─ Temperature      : 18.1 - 25.0°C      (Average: 21.8°C)
+   ├─ Humidity         : 85.1 - 95.0%       (Average: 90.1%)
+   ├─ pH Level         : 5.6 - 7.2          (Average: 6.4)
+   ├─ Rainfall         : 103 - 112 mm       (Average: 107.5 mm)
+   └─ Classification   : Low Water Need, Low N Requirement
+
+10. CHICKPEA
+    ├─ Nitrogen (N)     : 20 - 60 kg/ha      (Average: 40.1 kg/ha)
+    ├─ Phosphorus (P)   : 55 - 80 kg/ha      (Average: 67.8 kg/ha)
+    ├─ Potassium (K)    : 75 - 85 kg/ha      (Average: 79.9 kg/ha)
+    ├─ Temperature      : 17.0 - 21.0°C      (Average: 18.9°C)
+    ├─ Humidity         : 14.3 - 20.0%       (Average: 16.9%)
+    ├─ pH Level         : 6.0 - 8.9          (Average: 7.3)
+    ├─ Rainfall         : 65 - 95 mm         (Average: 80.1 mm)
+    └─ Classification   : Low Water Need, Medium N Requirement
+
+11. KIDNEYBEANS
+    ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 20.8 kg/ha)
+    ├─ Phosphorus (P)   : 55 - 80 kg/ha      (Average: 67.5 kg/ha)
+    ├─ Potassium (K)    : 15 - 25 kg/ha      (Average: 20.1 kg/ha)
+    ├─ Temperature      : 15.3 - 24.9°C      (Average: 20.1°C)
+    ├─ Humidity         : 18.1 - 25.0%       (Average: 21.6%)
+    ├─ pH Level         : 5.5 - 6.0          (Average: 5.7)
+    ├─ Rainfall         : 60 - 150 mm        (Average: 105.9 mm)
+    └─ Classification   : Low Water Need, Low N Requirement
+
+12. LENTIL
+    ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 18.8 kg/ha)
+    ├─ Phosphorus (P)   : 55 - 80 kg/ha      (Average: 68.4 kg/ha)
+    ├─ Potassium (K)    : 15 - 25 kg/ha      (Average: 19.4 kg/ha)
+    ├─ Temperature      : 18.1 - 29.9°C      (Average: 24.5°C)
+    ├─ Humidity         : 60.1 - 69.9%       (Average: 64.8%)
+    ├─ pH Level         : 5.9 - 7.8          (Average: 6.9)
+    ├─ Rainfall         : 35 - 55 mm         (Average: 45.7 mm)
+    └─ Classification   : Low Water Need, Low N Requirement
+
+13. COFFEE
+    ├─ Nitrogen (N)     : 80 - 120 kg/ha     (Average: 101.2 kg/ha)
+    ├─ Phosphorus (P)   : 15 - 40 kg/ha      (Average: 28.7 kg/ha)
+    ├─ Potassium (K)    : 25 - 35 kg/ha      (Average: 29.9 kg/ha)
+    ├─ Temperature      : 23.1 - 27.9°C      (Average: 25.5°C)
+    ├─ Humidity         : 50.0 - 69.9%       (Average: 58.9%)
+    ├─ pH Level         : 6.0 - 7.5          (Average: 6.8)
+    ├─ Rainfall         : 115 - 199 mm       (Average: 158.1 mm)
+    └─ Classification   : High Water Need, High N Requirement
+
+14. COCONUT
+    ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 22.0 kg/ha)
+    ├─ Phosphorus (P)   : 5 - 30 kg/ha       (Average: 16.9 kg/ha)
+    ├─ Potassium (K)    : 25 - 35 kg/ha      (Average: 30.6 kg/ha)
+    ├─ Temperature      : 25.0 - 29.9°C      (Average: 27.4°C)
+    ├─ Humidity         : 90.0 - 100.0%      (Average: 94.8%)
+    ├─ pH Level         : 5.5 - 6.5          (Average: 6.0)
+    ├─ Rainfall         : 131 - 226 mm       (Average: 175.7 mm)
+    └─ Classification   : High Water Need, Low N Requirement
+
+15. PIGEONPEAS
+    ├─ Nitrogen (N)     : 0 - 40 kg/ha       (Average: 20.7 kg/ha)
+    ├─ Phosphorus (P)   : 55 - 80 kg/ha      (Average: 67.7 kg/ha)
+    ├─ Potassium (K)    : 15 - 25 kg/ha      (Average: 20.3 kg/ha)
+    ├─ Temperature      : 18.3 - 37.0°C      (Average: 27.7°C)
+    ├─ Humidity         : 30.4 - 69.7%       (Average: 48.1%)
+    ├─ pH Level         : 4.5 - 7.4          (Average: 5.8)
+    ├─ Rainfall         : 90 - 199 mm        (Average: 149.5 mm)
+    └─ Classification   : Low Water Need, Low N Requirement
+
+===============================================================================
+                           OPTIMAL TEST PARAMETERS
+===============================================================================
+
+🎯 RECOMMENDED VALUES FOR RANDOM FOREST MODEL TESTING:
+
+┌─────────────┬──────┬──────┬──────┬──────┬───────────┬──────┬──────────┐
+│ CROP        │  N   │  P   │  K   │ TEMP │ HUMIDITY  │  PH  │ RAINFALL │
+├─────────────┼──────┼──────┼──────┼──────┼───────────┼──────┼──────────┤
+│ Rice        │  80  │  47  │  40  │ 23.7 │   82.2    │ 6.4  │   233    │
+│ Maize       │  76  │  48  │  20  │ 22.8 │   65.3    │ 6.3  │    84    │
+│ Cotton      │ 117  │  46  │  19  │ 24.0 │   80.0    │ 6.8  │    80    │
+│ Banana      │ 100  │  81  │  50  │ 27.4 │   80.2    │ 6.0  │   105    │
+│ Apple       │  24  │ 136  │ 200  │ 22.6 │   92.4    │ 5.9  │   113    │
+│ Mango       │  21  │  27  │  30  │ 31.3 │   50.3    │ 5.7  │    95    │
+│ Grapes      │  24  │ 133  │ 201  │ 23.0 │   81.7    │ 6.0  │    70    │
+│ Orange      │  19  │  16  │  10  │ 22.9 │   92.0    │ 7.0  │   111    │
+│ Pomegranate │  18  │  20  │  40  │ 22.4 │   89.9    │ 6.4  │   108    │
+│ Chickpea    │  39  │  68  │  79  │ 18.9 │   16.7    │ 7.4  │    80    │
+│ Kidneybeans │  22  │  67  │  20  │ 19.9 │   21.3    │ 5.7  │   107    │
+│ Lentil      │  16  │  68  │  19  │ 24.9 │   64.1    │ 7.0  │    47    │
+│ Coffee      │ 103  │  29  │  30  │ 25.7 │   57.6    │ 6.8  │   158    │
+│ Coconut     │  24  │  15  │  31  │ 27.4 │   95.0    │ 6.0  │   172    │
+│ Pigeonpeas  │  20  │  69  │  20  │ 28.9 │   47.2    │ 5.7  │   154    │
+└─────────────┴──────┴──────┴──────┴──────┴───────────┴──────┴──────────┘
+
+===============================================================================
+                          CROP CATEGORIZATION
+===============================================================================
+
+🔥 HIGH NITROGEN REQUIREMENT (>80 kg/ha):
+   • Cotton (117.8 kg/ha)
+   • Banana (100.2 kg/ha)
+   • Coffee (101.2 kg/ha)
+
+⚡ MEDIUM NITROGEN REQUIREMENT (40-80 kg/ha):
+   • Rice (79.9 kg/ha)
+   • Maize (77.8 kg/ha)
+   • Chickpea (40.1 kg/ha)
+
+🌱 LOW NITROGEN REQUIREMENT (<40 kg/ha):
+   • Apple, Mango, Grapes, Orange, Pomegranate
+   • Kidneybeans, Lentil, Coconut, Pigeonpeas
+
+💧 HIGH WATER REQUIREMENT (>150mm):
+   • Rice (236.2 mm)
+   • Coffee (158.1 mm)
+   • Coconut (175.7 mm)
+
+🌵 LOW WATER REQUIREMENT (<100mm):
+   • Lentil (45.7 mm), Grapes (69.6 mm), Maize (84.8 mm)
+   • Cotton (80.4 mm), Chickpea (80.1 mm), Mango (94.7 mm)
+
+🌡️ WARM CLIMATE CROPS (>25°C):
+   • Mango (31.2°C), Pigeonpeas (27.7°C), Coffee (25.5°C)
+   • Banana (27.4°C), Coconut (27.4°C)
+
+❄️ COOL CLIMATE CROPS (<20°C):
+   • Chickpea (18.9°C)
+
+===============================================================================
+                          FEATURE ANALYSIS SUMMARY
+===============================================================================
+
+📊 PARAMETER RANGES ACROSS ALL 15 CROPS:
+
+• Nitrogen (N)      : 18.8 - 117.8 kg/ha  (Range: 99.0 kg/ha)
+• Phosphorus (P)    : 16.6 - 134.2 kg/ha  (Range: 117.7 kg/ha)
+• Potassium (K)     : 10.0 - 200.1 kg/ha  (Range: 190.1 kg/ha)
+• Temperature       : 18.9 - 31.2°C       (Range: 12.3°C)
+• Humidity          : 16.9 - 94.8%        (Range: 78.0%)
+• pH Level          : 5.7 - 7.3           (Range: 1.6)
+• Rainfall          : 45.7 - 236.2 mm     (Range: 190.5 mm)
+
+🏆 EXTREME VALUES:
+
+• Highest N: Cotton (117.8 kg/ha)    | Lowest N: Lentil (18.8 kg/ha)
+• Highest P: Apple (134.2 kg/ha)     | Lowest P: Orange (16.6 kg/ha)
+• Highest K: Grapes (200.1 kg/ha)    | Lowest K: Orange (10.0 kg/ha)
+• Highest Temp: Mango (31.2°C)       | Lowest Temp: Chickpea (18.9°C)
+• Highest Humidity: Coconut (94.8%)  | Lowest Humidity: Chickpea (16.9%)
+• Highest pH: Chickpea (7.3)         | Lowest pH: Kidneybeans (5.7)
+• Highest Rainfall: Rice (236.2 mm)  | Lowest Rainfall: Lentil (45.7 mm)
+
+===============================================================================
+                              END OF REPORT
+===============================================================================
+
+Generated on: November 22, 2025
+Model: Random Forest Classifier (99.55% Accuracy)
+Dataset: 2,200 samples across 22 crops (100 samples per crop)
+Analysis: Top 15 most diverse crops for comprehensive testing
