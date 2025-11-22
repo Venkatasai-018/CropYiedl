@@ -62,7 +62,7 @@ class CropRecommendationPredictor:
             
             # Store prediction in history
             self.prediction_history.append({
-                'crop': result['recommended_crop'],
+                'recommended_crop': result['recommended_crop'],
                 'confidence': result['confidence'],
                 'confidence_level': confidence_level,
                 'timestamp': datetime.now().isoformat(),
@@ -118,28 +118,52 @@ class CropRecommendationPredictor:
     
     def get_stats(self):
         """Get prediction statistics."""
-        if not self.prediction_history:
-            return {"message": "No predictions made yet"}
-        
-        recent_predictions = self.prediction_history[-20:]
-        
-        crop_counts = {}
-        confidence_scores = []
-        
-        for pred in recent_predictions:
-            crop = pred['recommended_crop']
-            crop_counts[crop] = crop_counts.get(crop, 0) + 1
-            confidence_scores.append(pred['confidence'])
-        
-        return {
-            'total_predictions': len(self.prediction_history),
-            'recent_predictions': len(recent_predictions),
-            'average_confidence': float(np.mean(confidence_scores)) if confidence_scores else 0,
-            'most_recommended_crop': max(crop_counts.items(), key=lambda x: x[1])[0] if crop_counts else "None",
-            'crop_distribution': crop_counts,
-            'model_name': self.model_data['model_name'] if self.model_data else "Unknown",
-            'model_accuracy': self.model_data['accuracy'] if self.model_data else 0
-        }
+        try:
+            if not self.prediction_history:
+                return {
+                    "message": "No predictions made yet",
+                    'total_predictions': 0,
+                    'recent_predictions': 0,
+                    'average_confidence': 0,
+                    'most_recommended_crop': "None",
+                    'crop_distribution': {},
+                    'model_name': "Random Forest Classifier" if self.recommender.is_trained else "Unknown",
+                    'model_accuracy': self.recommender.accuracy if self.recommender.is_trained else 0
+                }
+            
+            recent_predictions = self.prediction_history[-20:]
+            
+            crop_counts = {}
+            confidence_scores = []
+            
+            for pred in recent_predictions:
+                crop = pred.get('recommended_crop', 'Unknown')
+                crop_counts[crop] = crop_counts.get(crop, 0) + 1
+                
+                confidence = pred.get('confidence', 0)
+                if isinstance(confidence, (int, float)):
+                    confidence_scores.append(confidence)
+            
+            return {
+                'total_predictions': len(self.prediction_history),
+                'recent_predictions': len(recent_predictions),
+                'average_confidence': float(np.mean(confidence_scores)) if confidence_scores else 0,
+                'most_recommended_crop': max(crop_counts.items(), key=lambda x: x[1])[0] if crop_counts else "None",
+                'crop_distribution': crop_counts,
+                'model_name': "Random Forest Classifier" if self.recommender.is_trained else "Unknown",
+                'model_accuracy': self.recommender.accuracy if self.recommender.is_trained else 0
+            }
+        except Exception as e:
+            return {
+                'error': f"Failed to get stats: {str(e)}",
+                'total_predictions': 0,
+                'recent_predictions': 0,
+                'average_confidence': 0,
+                'most_recommended_crop': "None",
+                'crop_distribution': {},
+                'model_name': "Random Forest Classifier" if hasattr(self, 'recommender') and self.recommender.is_trained else "Unknown",
+                'model_accuracy': self.recommender.accuracy if hasattr(self, 'recommender') and self.recommender.is_trained else 0
+            }
 
 # Initialize predictor
 predictor = CropRecommendationPredictor()
@@ -244,12 +268,13 @@ if __name__ == '__main__':
     print("🌾 Starting Advanced Crop Recommendation System")
     print("=" * 50)
     
-    if predictor.model_data:
-        print(f"✅ Model: {predictor.model_data['model_name']}")
-        print(f"✅ Accuracy: {predictor.model_data['accuracy']:.4f}")
+    if predictor.recommender.is_trained:
+        model_info = predictor.recommender.get_model_info()
+        print(f"✅ Model: {model_info['model_name']}")
+        print(f"✅ Accuracy: {predictor.recommender.accuracy:.4f}")
         print("✅ System ready!")
     else:
-        print("⚠️  Model not loaded. Please run 'python advanced_analysis.py' first.")
+        print("⚠️  Model not loaded. Please run 'python random_forest_module.py' first.")
     
     print("🌐 Server starting at: http://localhost:5000")
     print("=" * 50)
