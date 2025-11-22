@@ -1,0 +1,386 @@
+/* Advanced CSS Animations and Effects */
+
+/* Enhanced Particle Background */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(45, 110, 62, 0.3);
+    border-radius: 50%;
+    animation: float-particle 15s infinite linear;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Glass Morphism Effects */
+.glass-morph {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+    background: linear-gradient(45deg, #2D6E3E, #4A9960, #27AE60, #2ECC71);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Typewriter Effect */
+.typewriter {
+    overflow: hidden;
+    border-right: 3px solid #2D6E3E;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #2D6E3E; }
+}
+
+/* Hover Glow Effects */
+.glow-on-hover {
+    transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+    box-shadow: 0 0 20px rgba(45, 110, 62, 0.5),
+                0 0 40px rgba(45, 110, 62, 0.3),
+                0 0 60px rgba(45, 110, 62, 0.2);
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Progress Indicators */
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Morphing Shapes */
+.morphing-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+    }
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+    }
+}
+
+/* 3D Card Effects */
+.card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card-3d:hover {
+    transform: rotateX(10deg) rotateY(10deg);
+}
+
+/* Loading Animations */
+.pulse-loader {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #2D6E3E, #4A9960);
+    border-radius: 50%;
+    animation: pulse-scale 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-scale {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+.wave-loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.wave-loader div {
+    position: absolute;
+    border: 4px solid #2D6E3E;
+    opacity: 1;
+    border-radius: 50%;
+    animation: wave-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.wave-loader div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes wave-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
+
+/* Text Effects */
+.neon-text {
+    color: #2D6E3E;
+    text-shadow: 
+        0 0 5px rgba(45, 110, 62, 0.5),
+        0 0 10px rgba(45, 110, 62, 0.5),
+        0 0 15px rgba(45, 110, 62, 0.5),
+        0 0 20px rgba(45, 110, 62, 0.5);
+    animation: neon-flicker 2s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    from {
+        text-shadow: 
+            0 0 5px rgba(45, 110, 62, 0.5),
+            0 0 10px rgba(45, 110, 62, 0.5),
+            0 0 15px rgba(45, 110, 62, 0.5),
+            0 0 20px rgba(45, 110, 62, 0.5);
+    }
+    to {
+        text-shadow: 
+            0 0 2px rgba(45, 110, 62, 0.3),
+            0 0 5px rgba(45, 110, 62, 0.3),
+            0 0 8px rgba(45, 110, 62, 0.3),
+            0 0 12px rgba(45, 110, 62, 0.3);
+    }
+}
+
+/* Interactive Elements */
+.magnetic-button {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: scale(0);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+}
+
+.magnetic-button:hover::before {
+    transform: scale(1.1);
+}
+
+/* Parallax Effects */
+.parallax-element {
+    transform: translateZ(0);
+    transition: transform 0.1s ease-out;
+}
+
+/* Scroll Triggered Animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Checkbox/Radio Animations */
+.custom-checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2D6E3E;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.custom-checkbox.checked {
+    background: linear-gradient(45deg, #2D6E3E, #4A9960);
+    transform: scale(1.1);
+}
+
+.custom-checkbox.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    animation: check-bounce 0.4s ease;
+}
+
+@keyframes check-bounce {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    50% { transform: translate(-50%, -50%) scale(1.3); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Data Visualization Enhancements */
+.chart-tooltip {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(45, 110, 62, 0.1), transparent);
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .particle {
+        display: none; /* Hide particles on mobile for performance */
+    }
+    
+    .glass-morph {
+        backdrop-filter: blur(10px); /* Reduce blur on mobile */
+    }
+    
+    .morphing-blob {
+        animation: none; /* Disable complex animations on mobile */
+    }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .glass-card {
+        background: rgba(255, 255, 255, 0.98); /* Less transparency for better readability */
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1A202C;
+        --dark: #F7FAFC;
+        --gray-light: #2D3748;
+        --gradient-bg: linear-gradient(135deg, #2D3748 0%, #1A202C 100%);
+    }
+    
+    .glass-card {
+        background: rgba(26, 32, 44, 0.9);
+        color: #F7FAFC;
+    }
+    
+    .form-input {
+        background: rgba(45, 55, 72, 0.9);
+        color: #F7FAFC;
+        border-color: #4A5568;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
