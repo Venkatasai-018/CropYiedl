@@ -395,6 +395,12 @@ class CropRecommendationAnalyzer:
                 'C': [0.1, 1, 10],
                 'gamma': ['scale', 'auto'],
                 'kernel': ['rbf', 'linear']
+            },
+            'Logistic Regression': {
+                'C': [0.01, 0.1, 1, 10, 100],
+                'penalty': ['l2'],
+                'solver': ['lbfgs', 'liblinear', 'saga'],
+                'max_iter': [1000, 2000]
             }
         }
         
